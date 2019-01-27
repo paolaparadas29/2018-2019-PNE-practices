@@ -1,11 +1,13 @@
 def fib(n):
-    a, b = 0,1
-    i=2
-    while i<n:#llega hasta el numero 73 luego sufre transformaciones
-        a=b
-        b=a+b
-        i=i+1
-    return b
+    golden = (1 + 5 ** 0.5) / 2
+    print(golden)
+    x=golden**n
+    b=(1-golden)**n
+    x1=x-b
+    print(x1)
+    x1=x1/(5**(1/2))
+    print(5**(1/2))
+    return x1
 
 number=int(input('Please introduce a n: '))
 nth_term= fib(number)
