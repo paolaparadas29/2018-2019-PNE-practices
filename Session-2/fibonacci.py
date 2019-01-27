@@ -1,8 +1,9 @@
 def fib(n):
     a, b = 0,1
     i=2
-    while i<n:
-        a, b = b, a+b
+    while i<n:#llega hasta el numero 73 luego sufre transformaciones
+        a=b
+        b=a+b
         i=i+1
     return b
 
