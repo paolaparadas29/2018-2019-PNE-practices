@@ -1,14 +1,17 @@
-def fib(n):
-    golden = (1 + 5 ** 0.5) / 2
-    print(golden)
-    x=golden**n
-    b=(1-golden)**n
-    x1=x-b
-    print(x1)
-    x1=x1/(5**(1/2))
-    print(5**(1/2))
-    return x1
+def fibonacci(n):
+    number1=0
+    number2=1#806515533049393
+    i=1
+    while i<n:
+        i+=1
+
+        number1, number2= number2, number1+number2
+
+
+
+
+    return number1
 
 number=int(input('Please introduce a n: '))
-nth_term= fib(number)
+nth_term= fibonacci(number)
 print('The n-th term of the fibonacci serie is: ', nth_term)
