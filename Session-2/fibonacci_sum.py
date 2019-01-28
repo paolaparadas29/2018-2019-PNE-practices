@@ -1,13 +1,12 @@
-
-
-
 def fib(n):
     a, b = 0,1
-    sum=a+b
-
-    while a+b < n:
+    sum=0
+    i=1
+    while i < n:
+        sum=sum+a
         a, b = b, a+b
-        sum=sum+a+b
+        i+=1
+
 
     return sum
 
