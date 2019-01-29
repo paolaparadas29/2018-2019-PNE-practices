@@ -3,13 +3,8 @@ def fibonacci(n):
     number2=1#806515533049393
     i=1
     while i<n:
-        i+=1
-
         number1, number2= number2, number1+number2
-
-
-
-
+        i+=1
     return number1
 
 number=int(input('Please introduce a n: '))
