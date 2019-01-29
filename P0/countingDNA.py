@@ -1,0 +1,13 @@
+num= input('Introduce the sequence: ')
+n= num.upper()
+lenght= len(n)
+A= n.count('A')
+C= n.count('C')
+T= n.count('T')
+G= n.count('G')
+
+print('Total lenght:', lenght)
+print('A:', A )
+print('C:', C)
+print('T:',T)
+print('G:',G)
