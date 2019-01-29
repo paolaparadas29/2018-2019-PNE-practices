@@ -1,4 +1,4 @@
-def fib(n):
+def fibonacci(n):
         sum=0
         a, b = 0,1
         i=1
@@ -13,5 +13,5 @@ number=int(input('Please introduce a n: '))
 if number<1:
     print('Please introduce a positive number')
 else:
-    sumnth_term= fib(number)
+    sumnth_term= fibonacci(number)
     print('The sum of the n-th term of the fibonacci serie is: ', sumnth_term)

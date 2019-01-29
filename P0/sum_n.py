@@ -6,6 +6,6 @@ def sumn(n):
     return total
 
 # Main program
-num=int(input('Please introduce n: '))
-total_sum = sumn(num)
+#num=int(input('Please introduce n: '))
+total_sum = sumn(4)
 print('the total sum is {}'.format(total_sum))

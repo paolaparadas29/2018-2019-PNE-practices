@@ -1,12 +1,8 @@
 def countingDNA(n):
     f = open(n,"r")
     f=f.readlines()
-
-    print(f)#how to convert a list into a string
     f=''.join(f)
-    print(f)
     sequence = f.replace('\n','')
-    print(f)
     sequence= sequence.upper()
     lenght= len(sequence)
     a=sequence.count('A')
@@ -14,11 +10,11 @@ def countingDNA(n):
     t=sequence.count('T')
     g=sequence.count('G')
 
+
     print('Total lenght:', lenght)
-    print('A:', a,'\n','C:',c,'\n','T:', t,'\n','G:', g)
+    print('A:'+str(a)+'\n'+'C:'+str(c)+'\n'+'T:'+str(t)+'\n'+'G:'+str(g))
     return
 
-    f.close()
 
-sequence= countingDNA('/home/alumno/Pycharmfirstprojects')
 
+sequence= countingDNA('DNA.txt')

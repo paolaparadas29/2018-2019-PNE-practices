@@ -7,6 +7,6 @@ def fibonacci(n):
         i+=1
     return number1
 
-number=int(input('Please introduce a n: '))
-nth_term= fibonacci(number)
+#number=int(input('Please introduce a n: '))
+nth_term= fibonacci(74)
 print('The n-th term of the fibonacci serie is: ', nth_term)
