@@ -1,11 +1,13 @@
 def fibonacci(n):
         sum=0
-        a, b = 0,1
-        i=1
+        number1 = 0
+        number2 = 1  # 806515533049393
+        i = 0
         while i < n:
-            sum=sum+a
-            a, b = b, a+b
-            i+=1
+            sum=sum+number1
+            number2 = number1 + number2
+            number1 = number2 - number1
+            i += 1
         return sum
 
 number=int(input('Please introduce a n: '))
