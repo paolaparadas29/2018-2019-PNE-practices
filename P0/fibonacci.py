@@ -3,10 +3,11 @@ def fibonacci(n):
     number2=1#806515533049393
     i=1
     while i<n:
-        number1, number2= number2, number1+number2
+        number2 = number1 + number2
+        number1= number2-number1
         i+=1
     return number1
 
-#number=int(input('Please introduce a n: '))
-nth_term= fibonacci(74)
+nth_term= fibonacci(75)
 print('The n-th term of the fibonacci serie is: ', nth_term)
+
