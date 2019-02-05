@@ -1,4 +1,4 @@
-def count_a(seq):
+def count_s(seq):
     """Counting the number of As, CS, Ts and Gs in the sequence"""
 
     # Counter for the As
@@ -20,9 +20,11 @@ def count_a(seq):
     return results= {'A': resulta, 'C': resultc, 'T': resultt, 'G': resultg}
 
 
+
+
 # Main program
 s = input('Enter the sequence: ')
-na = count_a(s)
+n = count_s(s)
 print('The number of As is:  {}'.format(na))
 
 # Calculate the total sequence lenght
