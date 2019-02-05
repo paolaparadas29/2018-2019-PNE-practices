@@ -27,7 +27,7 @@ def count_bases(seq):
 
 
 # Main program
-s = input('Enter the sequence: ')
+s = (input('Enter the sequence: ')).upper()
 n = count_bases(s)
 # Calculate the total sequence lenght
 tl= len(s)
