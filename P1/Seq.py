@@ -6,6 +6,9 @@ class Seq:
 
         self.strbases = strbases
 
+    def get_sequence(self):
+        return self.strbases
+
     def len(self):
 
         return len(self.strbases)
@@ -30,14 +33,12 @@ class Seq:
                 b=D[b]
                 seq.append(b)
         trbases=''.join(seq)
+        self.strbases=trbases
         return trbases
 
     def reverse(self):
-
-        s = self.complement()
-        print(s)
-        reverseseq = s[::-1]
-        print(reverseseq)
+        t=self.strbases
+        reverseseq = self.strbases[::-1]
         return reverseseq
 
     def count(self):
@@ -56,8 +57,14 @@ class Seq:
         if len(self.strbases)>0:
             v=self.count()
             r=self.len()
-            perc = round(100.0 * v / r, 1)
+            perc = round(100.0*v/r, 1)
             return perc
         else:
             perc = 0
             return perc
+
+r=Seq('ACT','A')
+v=r.complement()
+print(v)
+print(r.reverse())
+print(r.complement())
