@@ -1,27 +1,32 @@
 class Seq:
-    def __init__(self,strbases,base):
-        self.base=base
-        self.strbases =strbases
+
+    def __init__(self, strbases, base):
+
+        self.base = base
+
+        self.strbases = strbases
 
     def len(self):
+
         return len(self.strbases)
 
     def complement(self):
-        D={'A':'T','T':'A','C':'G','G':'C'}
+
+        D = {'A':'T','T':'A','C':'G','G':'C'}
         seq=[]
 
 
         for b in self.strbases:
-            if b=='A':
+            if b =='A':
                 b=D[b]
                 seq.append(b)
-            elif b=='C':
+            elif b =='C':
                 b=D[b]
                 seq.append(b)
-            elif b=='T':
+            elif b =='T':
                 b=D[b]
                 seq.append(b)
-            elif b=='G':
+            elif b =='G':
                 b=D[b]
                 seq.append(b)
         trbases=''.join(seq)
@@ -47,20 +52,12 @@ class Seq:
 
 
     def perc(self):
-        if len(self)>0:
-            perc = round(100.0 * self.count(self.base) / len(str.bases), 2)
+
+        if len(self.strbases)>0:
+            v=self.count()
+            r=self.len()
+            perc = round(100.0 * v / r, 1)
             return perc
         else:
             perc = 0
             return perc
-
-
-s= Seq('ACTGCC','A')
-print(s.complement())
-print(s.reverse())
-print(s.len())
-print(s.count())
-print(s.perc())
-
-
-
