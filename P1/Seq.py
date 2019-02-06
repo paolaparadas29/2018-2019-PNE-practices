@@ -1,23 +1,23 @@
 class Seq:
-
+    #function to initialize variables
     def __init__(self, strbases, base):
 
         self.base = base
-
         self.strbases = strbases
 
+    #function to return a variable
     def get_sequence(self):
         return self.strbases
 
+    #function to get the lenght of the sequence
     def len(self):
-
         return len(self.strbases)
 
+    #function to give the complement of a function
     def complement(self):
 
         D = {'A':'T','T':'A','C':'G','G':'C'}
         seq=[]
-
 
         for b in self.strbases:
             if b =='A':
@@ -36,11 +36,13 @@ class Seq:
         self.strbases=trbases
         return trbases
 
+    #function to take the reverse of a complement sequence
     def reverse(self):
         t=self.strbases
         reverseseq = self.strbases[::-1]
         return reverseseq
 
+    #function to count the bases
     def count(self):
 
         # Counter for the base
@@ -51,7 +53,7 @@ class Seq:
         # Return the result
         return result
 
-
+    #function to get the perc
     def perc(self):
 
         if len(self.strbases)>0:
@@ -62,9 +64,3 @@ class Seq:
         else:
             perc = 0
             return perc
-
-r=Seq('ACT','A')
-v=r.complement()
-print(v)
-print(r.reverse())
-print(r.complement())
