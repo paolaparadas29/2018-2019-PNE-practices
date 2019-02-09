@@ -1,5 +1,6 @@
 from Seq import Seq
 
+#Sequence 1
 seq1a = Seq('ACTCT' ,'A')
 seq1t = Seq('ACTCT','T')
 seq1c = Seq('ACTCT','C')
@@ -9,6 +10,8 @@ print('Sequence 1:', seq1a.get_sequence())
 print('Lenght:', seq1a.len())
 print('Bases count:', 'A:', seq1a.count(), 'T:', seq1t.count(), 'C:', seq1c.count(), 'G:', seq1g.count())
 print('Bases percentage:', 'A:', seq1a.perc(),'%', 'T:', seq1t.perc(),'%', 'C:', seq1c.perc(),'%', 'G:', seq1g.perc(),'%')
+
+#Sequence 2
 
 seq2a= Seq('ACTCTTTTT','A')
 seq2t= Seq('ACTCTTTTT','T')
@@ -20,6 +23,7 @@ print('Lenght:', seq2a.len())
 print('Bases count:', 'A:', seq2a.count(), 'T:', seq2t.count(), 'C:', seq2c.count(), 'G:', seq2g.count())
 print('Bases percentage:', 'A:',seq2a.perc(),'%', 'T:',seq2t.perc(),'%', 'C:',seq2c.perc(),'%', 'G:',seq2g.perc(),'%')
 
+#Sequence 3
 
 seqc= seq1g.complement()
 seq3a= Seq(seqc,'A')
@@ -31,6 +35,8 @@ print('Sequence 3:', seqc)
 print('Lenght:', seq3a.len())
 print('Bases count:', 'A:', seq3a.count(), 'T:', seq3t.count(), 'C:', seq3c.count(), 'G:', seq3g.count())
 print('Bases percentage:', 'A:', seq3a.perc(),'%', 'T:', seq3t.perc(),'%', 'C:', seq3c.perc(),'%', 'G:', seq3g.perc(),'%')
+
+#Sequence 4
 
 seqr= seq1g.reverse()
 seq4a= Seq(seqr,'A')
