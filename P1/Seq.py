@@ -1,8 +1,7 @@
 class Seq:
     #function to initialize variables
-    def __init__(self, strbases, base):
+    def __init__(self, strbases):
 
-        self.base = base
         self.strbases = strbases
 
     #function to return a variable
@@ -43,20 +42,20 @@ class Seq:
         return reverseseq
 
     #function to count the bases
-    def count(self):
+    def count(self, base):
 
         # Counter for the base
         result = 0
-        for base in self.strbases:
-            if base == self.base:
+        for basee in self.strbases:
+            if basee == base:
                 result += 1
         # Return the result
         return result
 
     #function to get the perc
-    def perc(self):
+    def perc(self, base):
 
-        if len(self.strbases)>0:
+        if len(base)>0:
             v=self.count()
             r=self.len()
             perc = round(100.0*v/r, 1)
