@@ -32,12 +32,11 @@ class Seq:
                 b=D[b]
                 seq.append(b)
         trbases=''.join(seq)
-        self.strbases=trbases
-        return trbases
+
+        return Seq(trbases)
 
     #function to take the reverse of a complement sequence
     def reverse(self):
-        t=self.strbases
         reverseseq = self.strbases[::-1]
         return reverseseq
 
