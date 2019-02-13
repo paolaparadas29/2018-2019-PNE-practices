@@ -17,10 +17,13 @@ while True:
 
     #Asking the user for a message
     sequence = input('Enter a sequence: ')
+
     # Introducing the parameter 'sequence' to the object
     s1= Seq(sequence)
+
     #Reversing the sequence
     s2=s1.reverse()
+
     #Calculating the complement of the reverse
     s3=s2.complement()
 
