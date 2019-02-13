@@ -1,3 +1,4 @@
+#Importing class Seq from file Seq
 from Seq import Seq
 
 #Sequence 1
