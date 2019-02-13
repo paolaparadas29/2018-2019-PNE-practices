@@ -4,19 +4,19 @@ import socket
 #importing class Seq
 from Seq import Seq
 
-# Create  a socket for communicating with the server
-s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-
-PORT = 8080
+PORT = 8081
 IP = "212.128.253.72"
-
-# Connect to the server
-s.connect((IP, PORT))
 
 while True:
 
     #Asking the user for a message
     sequence = input('Enter a sequence: ')
+
+    # Create  a socket for communicating with the server
+    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+
+    # Connect to the server
+    s.connect((IP, PORT))
 
     # Introducing the parameter 'sequence' to the object
     s1= Seq(sequence)
