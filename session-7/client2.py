@@ -1,12 +1,11 @@
-# Creating a client program which sends >1
-
+#Importing package socket
 import socket
 
 # Create  a socket for communicating with the server
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
 PORT = 8081
-IP = "212.128.253.64"
+IP = "212.128.253.72"
 
 # Connect to the server
 s.connect((IP, PORT))
@@ -26,5 +25,3 @@ while True:
 
     # Closing the file
     s.close()
-
-print('The end')
