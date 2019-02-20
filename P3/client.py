@@ -2,14 +2,11 @@ import socket
 
 #Client IP and PORT
 
-IP='212.128.253.78'
-PORT=8081
+IP='127.0.0.1'
+PORT=8080
 
-
-# User can write a message
-response1 = 'atttc'+'\n'+'len'+'\n'+'complement'
-
-
+# User's message
+response1 = 'act\npercA'
 
 # Create socket
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -23,9 +20,9 @@ s.send(str.encode(response1))
 # Receive the servers response
 response = s.recv(2048).decode()
 
-# Changing color of the message
 # Print the server's response
 print('Response: ', response)
 
+# Close socket
 s.close()
 
