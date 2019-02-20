@@ -1,17 +1,16 @@
 import socket
 from Seq import Seq
 
-PORT = 8087
+PORT = 8080
 IP = '127.0.0.1'
 MAX_OPEN_REQUESTS = 5
 
 sequenceproof = 'ACTG'
 
-functions = ['len','complement','reverse','countA','countC','countG','countT','percA','percC','percG','percT']
+functions = ['len', 'complement', 'reverse', 'countA', 'countC', 'countG', 'countT', 'percA', 'percC', 'percG', 'percT']
 
 
 def process_client(cs):
-
     # Read client message. Decode it as a string
     msg = cs.recv(2048).decode("utf-8")
 
@@ -19,24 +18,37 @@ def process_client(cs):
 
     response1 = msg.split('\n')
 
+    # Separate the sequence (header) from the rest of the operations
 
     header = response1[0].upper()
 
+    # Depending on the content of the header it sends a different message
 
-    for i in header:
+    if header == '':
+        response = 'Alive'
 
-        if header == '\n':
-            response = 'Alive'
+    else:
 
-        elif i not in sequenceproof:
-            response = 'Error\n'
+        # Verify if the sequence has the right letters
+
+        for i in header:
+
+            if i not in sequenceproof:
+                response = 'Error\n'
+                break
+            else:
+                response = 'OK\n'
+
+        del response1[0]
+
+        # Whenever the sequence is right and not null, it proceeds to use the function 'recognize'
+
+        if response == 'OK\n':
+
+            response = response + str(recognize(header, response1))
 
         else:
-            response= 'OK\n'
-
-    del response1[0]
-
-    response= response + str(recognize(header,response1))
+            response = response
 
     # Sending message
     cs.send(str.encode(response))
@@ -45,28 +57,29 @@ def process_client(cs):
     cs.close()
 
 
-
-def recognize(s,g):
-
-    functions = ['len','complement','reverse','countA','countC','countG','countT','percA','percC','percG','percT']
+def recognize(s, g):
+    functions = ['len', 'complement', 'reverse', 'countA', 'countC', 'countG', 'countT', 'percA', 'percC', 'percG',
+                 'percT']
 
     # Loop to recognize if the function name coincide with the functions that my program can perform
-    respu=''
-    for i in range(0,len(g)):
+    respu = ''
+    for i in range(0, len(g)):
 
         if g[i] in functions:
 
-            resp = function(g[i],s)
-            respu= respu + str(resp) + '\n'
-            i+=1
+            #
+            resp = function(g[i], s)
+            respu = respu + str(resp) + '\n'
+            i += 1
 
         else:
             respu = respu + 'Error\n'
 
     return respu
 
+
 def function(d, t):
-    # Function which perfom the task that the client is asking for
+    # Function which performs the task that the client is asking for
 
     s1 = Seq(t)
 
@@ -81,28 +94,28 @@ def function(d, t):
         return s2.strbases
     elif d == 'countA':
         s2 = s1.count('A')
-        return s2.strbases
+        return s2
     elif d == 'countC':
         s2 = s1.count('C')
-        return s2.strbases
+        return s2
     elif d == 'countT':
         s2 = s1.count('T')
-        return s2.strbases
+        return s2
     elif d == 'countG':
         s2 = s1.count('G')
-        return s2.strbases
+        return s2
     elif d == 'percA':
         s2 = s1.perc('A')
-        return s2.strbases
+        return s2
     elif d == 'percC':
         s2 = s1.perc('C')
-        return s2.strbases
+        return s2
     elif d == 'percT':
         s2 = s1.perc('T')
-        return s2.strbases
+        return s2
     elif d == 'percG':
         s2 = s1.perc('G')
-        return s2.strbases
+        return s2
 
 
 # MAIN PROGRAM
