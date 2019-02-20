@@ -2,33 +2,30 @@ import socket
 
 #Client IP and PORT
 
-IP='172.17.0.1'
-PORT=8080
+IP='212.128.253.78'
+PORT=8081
 
-response=''
-while True:
-    s= response
-    msg= input('Enter the sequence and then the functions: ')
-    if msg!='\n':
-        response=msg+s
 
-    else:
+# User can write a message
+response1 = 'atttc'+'\n'+'len'+'\n'+'complement'
 
-        # Create socket
-        s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
-        # establish the connection to the Server (IP, PORT)
-        s.connect((IP, PORT))
 
-        # Send the request message to the server
-        s.send(str.encode(msg))
+# Create socket
+s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
-        # Receive the servers response
-        response = s.recv(2048).decode()
+# establish the connection to the Server (IP, PORT)
+s.connect((IP, PORT))
 
-        # Changing color of the message
-        # Print the server's response
-        print('Response: ', response)
+# Send the request message to the server
+s.send(str.encode(response1))
 
-        s.close()
+# Receive the servers response
+response = s.recv(2048).decode()
+
+# Changing color of the message
+# Print the server's response
+print('Response: ', response)
+
+s.close()
 
