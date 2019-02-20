@@ -1,8 +1,8 @@
 import socket
 from Seq import Seq
 
-PORT = 8081
-IP = '212.128.253.78'
+PORT = 8080
+IP = '127.0.0.1'
 MAX_OPEN_REQUESTS = 5
 
 sequenceproof = 'ACTG'
@@ -29,10 +29,10 @@ def process_client(cs):
             response = 'Alive'
 
         elif i not in sequenceproof:
-            response = 'Error'
+            response = 'Error\n'
 
         else:
-            response= 'OK'
+            response= 'OK\n'
 
     del response1[0]
 
@@ -51,16 +51,16 @@ def recognize(s,g):
     functions = ['len','complement','reverse','countA','countC','countG','countT','percA','percC','percG','percT']
 
     # Loop to recognize if the function name coincide with the functions that my program can perform
-    for i in range(len(g) - 1):
+    respu=''
+    for i in range(0,len(g)-1):
 
         if g[i] in functions:
 
             resp = function(g[i],s)
-            respu= str(resp) + '\n'
-        else:
-            resp = 'Error\n'
+            respu= respu + str(resp) + '\n'
 
-        respu = respu + resp
+        else:
+            respu = respu + 'Error\n'
 
     return respu
 
@@ -71,7 +71,7 @@ def function(d, t):
 
     if d == 'len':
         s2 = s1.len()
-        return s2.strbases
+        return s2
     elif d == 'complement':
         s2 = s1.complement()
         return s2.strbases
