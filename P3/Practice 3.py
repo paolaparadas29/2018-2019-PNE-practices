@@ -1,7 +1,7 @@
 import socket
 from Seq import Seq
 
-PORT = 8080
+PORT = 8087
 IP = '127.0.0.1'
 MAX_OPEN_REQUESTS = 5
 
@@ -52,12 +52,13 @@ def recognize(s,g):
 
     # Loop to recognize if the function name coincide with the functions that my program can perform
     respu=''
-    for i in range(0,len(g)-1):
+    for i in range(0,len(g)):
 
         if g[i] in functions:
 
             resp = function(g[i],s)
             respu= respu + str(resp) + '\n'
+            i+=1
 
         else:
             respu = respu + 'Error\n'
