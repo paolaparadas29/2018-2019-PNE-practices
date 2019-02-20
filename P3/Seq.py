@@ -55,7 +55,7 @@ class Seq:
     def perc(self, base):
 
         if len(base)>0:
-            v=self.count()
+            v=self.count(base)
             r=self.len()
             perc = round(100.0*v/r, 1)
             return perc
