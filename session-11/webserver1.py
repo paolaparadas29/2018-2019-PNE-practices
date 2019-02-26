@@ -19,6 +19,9 @@ def process_client(cs):
     print("Request message: ")
     termcolor.cprint(msg, 'green')
 
+
+    #content in html
+
     content = """
     <!DOCTYPE html>
     <html lang="en" dir="ltr">
