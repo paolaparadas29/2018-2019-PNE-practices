@@ -1,6 +1,6 @@
 class Seq:
     # Function to initialize variables
-    def _init_(self, strbases):
+    def __init__(self, strbases):
 
         self.strbases = strbases
 
