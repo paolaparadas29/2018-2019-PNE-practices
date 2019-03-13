@@ -3,53 +3,61 @@ import socketserver
 import termcolor
 from Seq import Seq
 
+sequenceproof = 'ACTGactg'
+
 # Define the Server's port
-PORT = 8005
+PORT = 8008
 
 
 # Class with our Handler. It is a called derived from BaseHTTPRequestHandler
 # It means that our class inheritates all his methods and properties
 class TestHandler(http.server.BaseHTTPRequestHandler):
 
-    def recognise(self, s):
-        valid = 'ACTG'
-        for letter in s:
-            if letter not in valid:
-                return False
-        return True
+    def function(self, t, d):
+        # Function which performs the task that the client is asking for
 
-    def processing(self, s1, command):
+        s1 = Seq(t)
 
-        if (command == "len"):
-            return s1.len()
-        elif (command == "complement"):
-            return s1.complement().get_strbase()
-        elif (command == "reverse"):
-            return s1.reverse().get_strbase()
-        elif (command == "countA"):
-            return s1.count('A')
-        elif (command == "countT"):
-            return s1.count('T')
-        elif (command == "countG"):
-            return s1.count("G")
-        elif (command == "countC"):
-            return s1.count("C")
-        elif (command == "percA"):
-            return s1.perc("A")
-        elif (command == "percT"):
-            return s1.perc("T")
-        elif (command == "percG"):
-            return s1.perc("G")
-        elif (command == "percC"):
-            return s1.perc("C")
-        else:
-            'Error'
+        if d == 'len':
+            s2 = s1.len()
+            return s2
+        elif d == 'complement':
+            s2 = s1.complement()
+            return s2.strbases
+        elif d == 'reverse':
+            s2 = s1.reverse()
+            return s2.strbases
+        elif d == 'countA':
+            s2 = s1.count('A')
+            return s2
+        elif d == 'countC':
+            s2 = s1.count('C')
+            return s2
+        elif d == 'countT':
+            s2 = s1.count('T')
+            return s2
+        elif d == 'countG':
+            s2 = s1.count('G')
+            return s2
+        elif d == 'percA':
+            s2 = s1.perc('A')
+            return s2
+        elif d == 'percC':
+            s2 = s1.perc('C')
+            return s2
+        elif d == 'percT':
+            s2 = s1.perc('T')
+            return s2
+        elif d == 'percG':
+            s2 = s1.perc('G')
+            return s2
 
     def do_GET(self):
         """This method is called whenever the client invokes the GET method
         in the HTTP protocol request"""
 
         # Print the request line
+        global response
         termcolor.cprint(self.requestline, 'green')
 
         if self.path == '/':
@@ -75,18 +83,29 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
             DNAsequence = request1[0]
             contents = contents + '<p>DNA sequence: ' + DNAsequence + '</p>'
 
-            if self.recognise(DNAsequence):
-                s1 = Seq(DNAsequence)
+            response = ''
+            for i in DNAsequence:
+
+                if i not in sequenceproof:
+                    response = 'Error\n'
+                    break
+                else:
+                    response = 'OK\n'
+
+            if response == 'OK\n':
+
+                s = DNAsequence
                 if 'chk=on' in self.path:
-                    Lenght = s1.len()
+                    Lenght = self.function(s, 'len')
                     contents = contents + "<p>Lenght: " + str(Lenght) + "</p>"
                 operation = self.path.split('operation=')[1].split("&")[0]
                 contents = contents + "<p>Operation: " + operation + "</p>"
                 base = self.path.split('base=')[1].split("&")[0]
                 contents = contents + "<p>Base: " + base + "</p>"
                 combination = operation + base
-                response = self.processing(s1, combination)
+                response = self.function(s, combination)
                 contents = contents + "<p>Response: " + str(response) + "</p>"
+
             else:
                 contents = contents + "<p>It is not a valid sequence</p>"
 
