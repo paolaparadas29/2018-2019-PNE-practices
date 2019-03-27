@@ -73,7 +73,7 @@ repositories = json.loads(text_json)
 # -- Get some data
 
 for i in repositories:
-    print('The name of the repositories are: ', i['name'])
+    print('The name of one repository is: ', i['name'])
 
 conn = http.client.HTTPSConnection(HOSTNAME)
 
